@@ -1,6 +1,10 @@
-package br.com.bb.lc.models;
+package br.com.bb.lc.models.conta;
 
 import java.math.BigDecimal;
+
+import br.com.bb.lc.models.Agencia;
+import br.com.bb.lc.models.pessoa.Pessoa;
+import br.com.bb.lc.models.pessoa.PessoaJuridica;
 
 //sacar, depositar, transferência, investir e consultar saldo (poupança e corrente).
 //sendo que para PJ existe a cobrança de uma taxa de 0.5% para cada saque ou transferência.

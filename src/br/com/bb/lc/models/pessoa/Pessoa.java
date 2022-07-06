@@ -1,4 +1,6 @@
-package br.com.bb.lc.models;
+package br.com.bb.lc.models.pessoa;
+
+import br.com.bb.lc.models.Endereco;
 
 public abstract class Pessoa {
     private Endereco endereco;

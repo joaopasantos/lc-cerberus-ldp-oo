@@ -1,4 +1,4 @@
-package br.com.bb.lc.models;
+package br.com.bb.lc.models.pessoa;
 
 public class PessoaFisica extends Pessoa {
     private String CPF;

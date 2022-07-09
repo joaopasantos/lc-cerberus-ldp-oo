@@ -1,6 +1,7 @@
 package br.com.bb.lc.models.conta;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import br.com.bb.lc.models.Agencia;
 import br.com.bb.lc.models.pessoa.Pessoa;
@@ -42,5 +43,9 @@ public abstract class Conta {
         BigDecimal valorRetirado = this.sacar(valor);
         destino.depositar(valor);
         return valorRetirado;
+    }
+
+    public BigDecimal consultarSaldo() {
+        return saldo.setScale(2, RoundingMode.DOWN);
     }
 }

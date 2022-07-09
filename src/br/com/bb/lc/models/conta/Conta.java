@@ -17,7 +17,6 @@ public abstract class Conta {
     public BigDecimal sacar(BigDecimal valor) {
         if (valor.signum() == -1)
             throw new RuntimeException("Valor de saque inválido");
-
         // Para PJ, existe a cobrança de uma taxa de 0.5% para cada saque ou
         // transferência.
         if (this.titular instanceof PessoaJuridica)
@@ -44,29 +43,4 @@ public abstract class Conta {
         destino.depositar(valor);
         return valorRetirado;
     }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public Agencia getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
-    }
-
-    public Pessoa getTitular() {
-        return titular;
-    }
-
-    public void setTitular(Pessoa titular) {
-        this.titular = titular;
-    }
-
 }

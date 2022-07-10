@@ -1,11 +1,13 @@
 package br.com.bb.lc.models.pessoa;
 
+import br.com.bb.lc.models.Endereco;
+
 public class PessoaJuridica extends Pessoa {
     private String cnpj;
 
-    @Override
-    public void setIdentificador(String id) {
-        this.cnpj = id;
+    public PessoaJuridica(String cnpj, String nome, Endereco endereco, String telefone) {
+        super(endereco, telefone, nome);
+        this.cnpj = cnpj;
     }
 
     @Override

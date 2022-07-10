@@ -1,11 +1,13 @@
 package br.com.bb.lc.models.pessoa;
 
+import br.com.bb.lc.models.Endereco;
+
 public class PessoaFisica extends Pessoa {
     private String cpf;
 
-    @Override
-    public void setIdentificador(String id) {
-        this.cpf = id;
+    public PessoaFisica(String cpf, String nome, Endereco endereco, String telefone) {
+        super(endereco, telefone, nome);
+        this.cpf = cpf;
     }
 
     @Override

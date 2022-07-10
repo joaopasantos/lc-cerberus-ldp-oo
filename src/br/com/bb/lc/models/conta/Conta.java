@@ -32,7 +32,7 @@ public abstract class Conta {
         // Para PJ, existe a cobrança de uma taxa de 0.5% para cada saque ou
         // transferência.
         if (this.titular instanceof PessoaJuridica)
-            valor.multiply(new BigDecimal("1.05"));
+            valor = valor.multiply(new BigDecimal("1.005"));
 
         if (this.saldo.compareTo(valor) == -1)
             throw new RuntimeException("Saldo insuficiente para operação");

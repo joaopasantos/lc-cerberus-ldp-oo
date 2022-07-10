@@ -14,13 +14,15 @@ public class ContaInvestimento extends Conta {
     }
 
     public BigDecimal investir(BigDecimal valor) {
+        if (this.consultarSaldo().compareTo(valor) < 0)
+            throw new RuntimeException("Conta não possui saldo suficiente para investimento");
         BigDecimal rendimento;
         BigDecimal taxa = TAXA_DE_RENDIMENTO_BASE;
 
         if (this.getTitular() instanceof PessoaJuridica)
             taxa = taxa.add(BigDecimal.valueOf(2));
 
-        rendimento = this.consultarSaldo()
+        rendimento = valor
                 .multiply(taxa)
                 .divide(BigDecimal.valueOf(100));
 

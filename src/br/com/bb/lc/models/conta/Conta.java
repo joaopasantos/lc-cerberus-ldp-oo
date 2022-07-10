@@ -15,6 +15,17 @@ public abstract class Conta {
     private Pessoa titular;
     private BigDecimal saldo;
 
+    public Conta(String numero, Agencia agencia, Pessoa titular) {
+        this.numero = numero;
+        this.agencia = agencia;
+        this.titular = titular;
+        this.saldo = BigDecimal.ZERO;
+    }
+
+    public Pessoa getTitular() {
+        return titular;
+    }
+
     public BigDecimal sacar(BigDecimal valor) {
         if (valor.signum() == -1)
             throw new RuntimeException("Valor de saque inválido");

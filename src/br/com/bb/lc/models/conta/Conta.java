@@ -10,6 +10,7 @@ import br.com.bb.lc.models.pessoa.PessoaJuridica;
 //sacar, depositar, transferência, investir e consultar saldo (poupança e corrente).
 //sendo que para PJ existe a cobrança de uma taxa de 0.5% para cada saque ou transferência.
 public abstract class Conta {
+    final private BigDecimal taxaOpPJ = new BigDecimal("0.005");
     private String numero;
     private Agencia agencia;
     private Pessoa titular;
@@ -29,14 +30,16 @@ public abstract class Conta {
     public BigDecimal sacar(BigDecimal valor) {
         if (valor.signum() == -1)
             throw new RuntimeException("Valor de saque inválido");
-        // Para PJ, existe a cobrança de uma taxa de 0.5% para cada saque ou
-        // transferência.
-        if (this.titular instanceof PessoaJuridica)
-            valor = valor.multiply(new BigDecimal("1.005"));
-
         if (this.saldo.compareTo(valor) == -1)
             throw new RuntimeException("Saldo insuficiente para operação");
-
+        // Para PJ, existe a cobrança de uma taxa de 0.5% para cada saque ou
+        // transferência.
+        if (this.titular instanceof PessoaJuridica) {
+            BigDecimal adicional = valor.multiply(taxaOpPJ);
+            valor = valor.add(adicional);
+            if (this.saldo.compareTo(valor) == -1)
+                throw new RuntimeException("Saldo insuficiente para pagamento da taxa");
+        }
         this.saldo = saldo.subtract(valor);
         return valor;
     }
